@@ -1,11 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yonatan Mor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <body>
+    <div id="container">
+      <div id="first-page">
+        <div id="first-header">
+          <h1>Yonatan Mor</h1>
+          <span>Front-end Eng.</span>
+        </div>
+        <div id="video-outter">
+          <div id="video-inner">
+            <video muted id="video" controls src="rooms.mp4"></video>
+          </div>
+        </div>
+        <div id="img-container">
+          <img src="public/sunsetTree.jpg" alt="sunsetTree" />
+        </div>
+      </div>
+      <div id="content">
+        <div id="second-header">
+          <h1>Yonatan Mor</h1>
+          <span>Front-end Eng.</span>
+        </div>
+        <div id="text-container">
+          <p>
+            hi I'm Yonatan! <br />
+            I'm a junior enthusiast developer with a genuine passion for
+            creating<br />
+            I enjoy making beautiful designs and flowing & intuitive
+            interfaces<br />
+          </p>
+        </div>
+        <ul>
+          <li><a href="https://github.com/YonatanMor">gitHub</a></li>
+          <li>
+            <a href="https://www.linkedin.com/in/jonathan-mor-dev/">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/jonathan-mor-dev/"
+              >Instagram</a
+            >
+          </li>
+          <li id="cv">
+            <a
+              href="https://drive.google.com/file/d/1rmxdHWHjF23FQVbY_HUUUGCt9dNgZrJ3/view?usp=sharing"
+              >CV</a
+            >
+          </li>
+        </ul>
+        <div id="project-container">
+          <h2>Personal Project</h2>
+          <ul>
+            <li><a id="videoBtn">Reel</a></li>
+            <li id="readme">
+              <a
+                href="https://github.com/YonatanMor/rooms?tab=readme-ov-file#readme"
+                >readMe</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const videoBtn = document.getElementById("videoBtn");
+    const videoOut = document.getElementById("video-outter");
+    const videoIn = document.getElementById("video-inner");
+    const video = document.getElementById("video");
+
+    videoBtn.addEventListener("click", (e) => {
+      videoOut.style.display = "flex";
+      e.stopPropagation();
+      video.play();
+    });
+
+    videoIn.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    document.body.addEventListener("click", () => {
+      videoOut.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+    });
+
+    const fHeader = document.getElementById("first-header");
+    const sHeader = document.getElementById("second-header");
+
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.pageYOffset;
+      const vh = window.innerHeight;
+      const fOpacity = 1 - (3.2 * scrollPosition) / vh;
+
+      const transitionStart = vh * 0.6;
+      transitionEnd = vh * 0.4;
+      const sOpacity = (scrollPosition - transitionStart) / transitionEnd;
+
+      fHeader.style.opacity = fOpacity;
+      sHeader.style.opacity = sOpacity;
+    });
+    // const playButton = document.getElementById("playButton");
+    // playButton.addEventListener("click", function () {
+    //   // Show the video element
+    //   video.style.display = "block";
+
+    //   // Request fullscreen
+    //   if (video.requestFullscreen) {
+    //     video.requestFullscreen();
+    //   } else if (video.mozRequestFullScreen) {
+    //     // Firefox
+    //     video.mozRequestFullScreen();
+    //   } else if (video.webkitRequestFullscreen) {
+    //     // Chrome, Safari and Opera
+    //     video.webkitRequestFullscreen();
+    //   } else if (video.msRequestFullscreen) {
+    //     // IE/Edge
+    //     video.msRequestFullscreen();
+    //   }
+
+    //   // Play the video
+    //   video.play().catch((error) => {
+    //     console.error("Error trying to play the video:", error);
+    //   });
+
+    //   // Optionally hide the button after clicking
+    //   playButton.style.display = "none";
+    // });
+  </script>
 </html>
