@@ -44,7 +44,9 @@
         <div id="project-container">
           <h2>Personal Project</h2>
           <ul>
-            <li><img id="videoBtn" src="videoSnap.png" /></li>
+            <li id="videoBtnContainer">
+              <img id="videoImg" src="videoSnap.png"/>
+            </li>
             <li id="github-repo">
               <a
                 href="https://github.com/YonatanMor/rooms?tab=readme-ov-file#readme"
@@ -79,7 +81,7 @@
   </body>
 
   <script>
-    const videoBtn = document.getElementById("videoBtn");
+    const videoBtn = document.getElementById("videoImg");
     const videoContainer = document.getElementById("video-container");
     const video = document.getElementById("video");
 
