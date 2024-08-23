@@ -8,6 +8,25 @@ body {
   box-sizing: border-box;
 }
 
+#tinted-blur-screen {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  animation: rollDown 0.2s forwards;
+}
+
+@keyframes rollDown {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
 #container {
   position: relative;
   max-width: min(100dvw, 400px);
