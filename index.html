@@ -18,8 +18,10 @@
     <div id="container">
       <h1>Yonatan Mor</h1>
       <span id="sub-title">Frontend Develor</span>
-      <div id="video-container">
-        <video muted id="video" controls src="testVideo.mp4"></video>
+      <div id="vid-outer-container">
+        <div id="vid-inner-container">
+          <video muted id="video" controls src="testVideo.mp4"></video>
+        </div>
       </div>
 
       <div id="content">
@@ -45,7 +47,7 @@
           <h2>Personal Project</h2>
           <ul>
             <li id="videoBtnContainer">
-              <img id="videoImg" src="videoSnap.png"/>
+              <img id="videoImg" src="videoSnap.png" />
             </li>
             <li id="github-repo">
               <a
@@ -82,15 +84,11 @@
 
   <script>
     const videoBtn = document.getElementById("videoImg");
-    const videoContainer = document.getElementById("video-container");
+    const videoContainer = document.getElementById("vid-outer-container");
     const video = document.getElementById("video");
 
     videoBtn.addEventListener("click", (e) => {
-      Object.assign(videoContainer.style, {
-        display: "flex",
-        justifyContent: "center",
-      });
-      e.stopPropagation();
+      (videoContainer.style.display = "flex"), e.stopPropagation();
       video.play();
     });
 

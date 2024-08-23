@@ -27,8 +27,15 @@ h1 {
   letter-spacing: 3px;
 }
 
-#video-container {
+#vid-outer-container {
   display: none;
+  position: sticky;
+  justify-content: center;
+}
+
+#vid-inner-container {
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: 1rem;
   background-color: rgba(83, 81, 79);
