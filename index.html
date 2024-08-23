@@ -1,11 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yonatan Mor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <body>
+    <div id="container">
+      <h1>Yonatan Mor</h1>
+      <span id="sub-title">Frontend Engineer</span>
+      <div id="video-container">
+        <video muted id="video" controls src="video2.mp4"></video>
+      </div>
+
+      <div id="content">
+        <div id="text-container">
+          <p>
+            hi I'm Yonatan! <br />
+            I'm a junior? enthusiast? developer with a genuine passion for
+            creating<br />
+            I enjoy making beautiful designs and flowing & intuitive
+            interfaces<br />
+          </p>
+        </div>
+        <div id="project-container">
+          <h2>Personal Project</h2>
+          <ul>
+            <li><a id="videoBtn">Watch Reel</a></li>
+            <li id="github-repo">
+              <a
+                href="https://github.com/YonatanMor/rooms?tab=readme-ov-file#readme"
+                >GitHub repo</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div id="contact-container">
+          <h2>Contact Info</h2>
+          <ul>
+            <li><a href="https://github.com/YonatanMor">GitHub Profile</a></li>
+            <li>
+              <a href="https://www.linkedin.com/in/jonathan-mor-dev/"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/yonatanmor/">Instagram</a>
+            </li>
+            <li id="cv">
+              <a
+                href="https://drive.google.com/file/d/1rmxdHWHjF23FQVbY_HUUUGCt9dNgZrJ3/view?usp=sharing"
+                >CV</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const videoBtn = document.getElementById("videoBtn");
+    const videoContainer = document.getElementById("video-container");
+    const video = document.getElementById("video");
+
+    videoBtn.addEventListener("click", (e) => {
+      Object.assign(videoContainer.style, {
+        display: "flex",
+        justifyContent: "center",
+      });
+      e.stopPropagation();
+      video.play();
+    });
+
+    videoContainer.addEventListener("click", (e) => {
+      videoContainer.style.display = "flex";
+      e.stopPropagation();
+    });
+
+    document.body.addEventListener("click", () => {
+      videoOut.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+    });
+
+    const fHeader = document.getElementById("first-header");
+    const sHeader = document.getElementById("second-header");
+
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.pageYOffset;
+      const vh = window.innerHeight;
+      const fOpacity = 1 - (2.9 * scrollPosition) / vh;
+
+      const transitionStart = vh * 0.6;
+      transitionEnd = vh * 0.4;
+      const sOpacity = (scrollPosition - transitionStart) / transitionEnd;
+
+      fHeader.style.opacity = fOpacity;
+      sHeader.style.opacity = sOpacity;
+    });
+  </script>
 </html>
