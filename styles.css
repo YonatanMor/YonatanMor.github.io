@@ -78,6 +78,7 @@ p {
 
 #videoImg {
   width: 212px;
+  border-radius: 4px;
   aspect-ratio: 16 / 9;
 }
 
