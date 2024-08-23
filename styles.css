@@ -23,7 +23,7 @@ body {
   #sub-title {
     display: inline-block;
     text-align: center;
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
   }
   
   #video-container {
@@ -68,7 +68,12 @@ body {
     color: white;
     border-radius: 12px;
   }
-  
+
+  #videoBtn{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
   #contact-container {
     display: flex;
     flex-direction: column;
