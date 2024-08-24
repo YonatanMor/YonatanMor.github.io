@@ -8,16 +8,6 @@ body {
   box-sizing: border-box;
 }
 
-#tinted-blur-screen {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 0, 0, 0.3);
-  backdrop-filter: blur(1px);
-  animation: rollDown 0.2s forwards;
-}
-
 @keyframes rollDown {
   0% {
     top: -100%;
@@ -46,27 +36,41 @@ h1 {
   letter-spacing: 3px;
 }
 
-#vid-outer-container {
-  display: none;
-  position: sticky;
+.modal-overlay {
+  position: fixed;
   top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgb(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  /*animation: rollDown 0.2s forwards;*/
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
   justify-content: center;
 }
 
-#vid-inner-container {
-  display: flex;
-  justify-content: center;
+.modal-close {
   position: absolute;
-  top: 1rem;
-  background-color: rgb(49, 50, 52);
-  border-radius: 16px;
-  padding: 16px 16px;
+  z-index: 100;
+  left: 8px;
+  top: -8px;
+  font-size: 40px;
+  cursor: pointer;
 }
 
 #video {
   border-radius: 12px;
-  max-height: 70vh;
-  max-width: 80vw;
+  width: calc(100% - 24px);
 }
 
 #content {

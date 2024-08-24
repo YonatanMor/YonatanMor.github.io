@@ -15,35 +15,38 @@
   <link rel="stylesheet" href="styles.css" />
 
   <body>
+    <div class="modal-overlay"></div>
+    <div class="modal">
+      <div class="modal-close">&times;</div>
+      <video muted id="video" controls src="testVideo.mp4"></video>
+    </div>
     <div id="container">
-      <div id="tinted-blur-screen"></div>
       <h1>Yonatan Mor</h1>
       <span id="sub-title">Frontend Develor</span>
-      <div id="vid-outer-container">
-        <div id="vid-inner-container">
-          <video muted id="video" controls src="testVideo.mp4"></video>
-        </div>
-      </div>
 
       <div id="content">
         <div id="text-container">
           <h2>Me In A Nutshell</h2>
           <p>
-            Hi, I'm Yonatan! <br />
-            I'm a junior frontend developer with a strong passion for creating.
-            <br /><br />
-            I enjoy crafting beautiful UIs with intuitive interfaces. <br />
-            Linked below is a short reel showcasing a mobile-first app I
-            developed for booking rooms. <br /><br />
-            You'll also find links to my social media profiles below.
-            <br /><br />
-            Beyond coding, I love working with metal and wood, I build and fly
-            RC planes, experiment with Arduino microcontroller and a hobbiest
-            car mechanic in times of need :-)<br /><br />Cheers!
+            Hi, I'm Yonatan, a junior frontend developer with a passion for
+            crafting great products and great UIs. I pride myself on keeping
+            with the latest trends and love learning new ways to build better
+            software.
+            <br />
+          </p>
+          <p>
+            I'm an engineer at heart, love building with wood, and metal,
+            playing with Arduino microcontrollers, and to fly remote controlled
+            planes I've designed and built
+          </p>
+          <p>
+            Checkout the links below to see my work and get in touch. <br />
+            Hope to hear from you!
           </p>
         </div>
         <div id="project-container">
-          <h2>Personal Project</h2>
+          <h2 style="margin: 0">Room Booker <br /></h2>
+          <div>(My Pet Project)</div>
           <ul>
             <li id="videoBtnContainer">
               <img id="videoImg" src="videoSnap.png" />
@@ -85,23 +88,31 @@
 
   <script>
     const videoBtn = document.getElementById("videoImg");
-    const videoContainer = document.getElementById("vid-outer-container");
+    const modalConatiner = document.querySelector(".modal");
+    const modalClose = document.querySelector(".modal-close");
     const video = document.getElementById("video");
-    const darkBlurScreen = document.getElementById("tinted-blur-screen");
+    const modalOverlay = document.querySelector(".modal-overlay");
 
     videoBtn.addEventListener("click", (e) => {
-      darkBlurScreen.style.display = "flex";
-      (videoContainer.style.display = "flex"), e.stopPropagation();
+      modalOverlay.style.display = "block";
+      modalConatiner.style.display = "flex";
+      e.stopPropagation();
       video.play();
     });
 
-    videoContainer.addEventListener("click", (e) => {
+    modalClose.addEventListener("click", (e) => {
+      modalOverlay.style.display = "none";
+      modalConatiner.style.display = "none";
+      e.stopPropagation();
+    });
+
+    modalConatiner.addEventListener("click", (e) => {
       e.stopPropagation();
     });
 
     document.body.addEventListener("click", () => {
-      darkBlurScreen.style.display = "none";
-      videoContainer.style.display = "none";
+      modalOverlay.style.display = "none";
+      modalConatiner.style.display = "none";
       video.pause();
       video.currentTime = 0;
     });
