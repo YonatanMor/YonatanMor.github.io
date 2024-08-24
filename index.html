@@ -88,31 +88,31 @@
 
   <script>
     const videoBtn = document.getElementById("videoImg");
-    const modalConatiner = document.querySelector(".modal");
+    const modalContainer = document.querySelector(".modal");
     const modalClose = document.querySelector(".modal-close");
     const video = document.getElementById("video");
     const modalOverlay = document.querySelector(".modal-overlay");
 
     videoBtn.addEventListener("click", (e) => {
       modalOverlay.style.display = "block";
-      modalConatiner.style.display = "flex";
+      modalContainer.style.display = "flex";
       e.stopPropagation();
       video.play();
     });
 
     modalClose.addEventListener("click", (e) => {
       modalOverlay.style.display = "none";
-      modalConatiner.style.display = "none";
+      modalContainer.style.display = "none";
       e.stopPropagation();
     });
 
-    modalConatiner.addEventListener("click", (e) => {
+    modalContainer.addEventListener("click", (e) => {
       e.stopPropagation();
     });
 
     document.body.addEventListener("click", () => {
       modalOverlay.style.display = "none";
-      modalConatiner.style.display = "none";
+      modalContainer.style.display = "none";
       video.pause();
       video.currentTime = 0;
     });
