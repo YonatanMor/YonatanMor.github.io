@@ -11,14 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
     />
-    <script>
-      fetch("https://get.geojs.io/v1/ip/geo.json")
-        .then((response) => response.json())
-        .then((data) => alert(data.country_name));
-    </script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <link rel="stylesheet" href="styles.css" />
-
   <body>
     <div class="modal-overlay"></div>
     <div class="modal">
@@ -90,37 +84,43 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("https://get.geojs.io/v1/ip/geo.json")
+          .then((response) => response.json())
+          .then((data) => alert(data.country_name));
+
+        const videoBtn = document.getElementById("videoBtnContainer");
+        const modalContainer = document.querySelector(".modal");
+        const modalClose = document.querySelector(".modal-close");
+        const video = document.getElementById("video");
+        const modalOverlay = document.querySelector(".modal-overlay");
+
+        videoBtn.addEventListener("click", (e) => {
+          modalOverlay.style.display = "block";
+          modalContainer.style.display = "flex";
+          e.stopPropagation();
+          video.play();
+        });
+
+        modalClose.addEventListener("click", (e) => {
+          modalOverlay.style.display = "none";
+          modalContainer.style.display = "none";
+          e.stopPropagation();
+        });
+
+        modalContainer.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+
+        document.body.addEventListener("click", () => {
+          modalOverlay.style.display = "none";
+          modalContainer.style.display = "none";
+          video.pause();
+          video.currentTime = 0;
+        });
+      });
+    </script>
   </body>
-
-  <script>
-    const videoBtn = document.getElementById("videoBtnContainer");
-    const modalContainer = document.querySelector(".modal");
-    const modalClose = document.querySelector(".modal-close");
-    const video = document.getElementById("video");
-    const modalOverlay = document.querySelector(".modal-overlay");
-
-    videoBtn.addEventListener("click", (e) => {
-      modalOverlay.style.display = "block";
-      modalContainer.style.display = "flex";
-      e.stopPropagation();
-      video.play();
-    });
-
-    modalClose.addEventListener("click", (e) => {
-      modalOverlay.style.display = "none";
-      modalContainer.style.display = "none";
-      e.stopPropagation();
-    });
-
-    modalContainer.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-
-    document.body.addEventListener("click", () => {
-      modalOverlay.style.display = "none";
-      modalContainer.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
-    });
-  </script>
 </html>
