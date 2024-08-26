@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Yonatan Mor</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="favicon.svg" />
-    <title>Yonatan Mor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +17,7 @@
     <div class="modal-overlay"></div>
     <div class="modal">
       <div class="modal-close">&times;</div>
-      <video muted id="video" controls src="testVideo.mp4"></video>
+      <video muted id="video" controls src="#"></video>
     </div>
     <div id="container">
       <h1>Yonatan Mor</h1>
@@ -64,10 +64,7 @@
           <h2>Contact Info</h2>
           <ul>
             <li id="cv">
-              <a
-                href="https://drive.google.com/file/d/1rmxdHWHjF23FQVbY_HUUUGCt9dNgZrJ3/view?usp=sharing"
-                >CV</a
-              >
+              <a id="ancorCV" href="#">CV</a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/jonathan-mor-dev/"
@@ -86,16 +83,31 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        fetch("https://get.geojs.io/v1/ip/geo.json")
-          .then((response) => response.json())
-          .then((data) => alert(data.country_name));
-
+      document.addEventListener("DOMContentLoaded", async () => {
+        const ancorCV = document.getElementById("ancorCV");
         const videoBtn = document.getElementById("videoBtnContainer");
         const modalContainer = document.querySelector(".modal");
         const modalClose = document.querySelector(".modal-close");
         const video = document.getElementById("video");
         const modalOverlay = document.querySelector(".modal-overlay");
+
+        async function getUserLocation() {
+          const data = await fetch("https://get.geojs.io/v1/ip/geo.json");
+          return await data.json();
+        }
+
+        const userLocation = await getUserLocation();
+        const isIsraeli = userLocation.country === "Israel";
+
+        if (isIsraeli) {
+          ancorCV.href =
+            "https://drive.google.com/file/d/1-ND6S7hMmUjS2hUjNebPKPavtDZrGxRt/view?usp=sharing";
+          video.src = "video.mp4";
+        } else {
+          ancorCV.href =
+            "https://drive.google.com/file/d/1-JklAGJ4tJDJMhZs5TSHikGzxcvAP3x4/view?usp=sharing";
+          video.src = "tiflatz.mp4";
+        }
 
         videoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
