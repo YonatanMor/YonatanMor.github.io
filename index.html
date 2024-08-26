@@ -50,6 +50,7 @@
           <ul>
             <li id="videoBtnContainer">
               <img id="videoImg" src="videoSnap.png" />
+              <span>Watch Reel</span>
             </li>
             <li id="github-repo">
               <a
@@ -87,7 +88,7 @@
   </body>
 
   <script>
-    const videoBtn = document.getElementById("videoImg");
+    const videoBtn = document.getElementById("videoBtnContainer");
     const modalContainer = document.querySelector(".modal");
     const modalClose = document.querySelector(".modal-close");
     const video = document.getElementById("video");
@@ -115,22 +116,6 @@
       modalContainer.style.display = "none";
       video.pause();
       video.currentTime = 0;
-    });
-
-    const fHeader = document.getElementById("first-header");
-    const sHeader = document.getElementById("second-header");
-
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.pageYOffset;
-      const vh = window.innerHeight;
-      const fOpacity = 1 - (2.9 * scrollPosition) / vh;
-
-      const transitionStart = vh * 0.6;
-      transitionEnd = vh * 0.4;
-      const sOpacity = (scrollPosition - transitionStart) / transitionEnd;
-
-      fHeader.style.opacity = fOpacity;
-      sHeader.style.opacity = sOpacity;
     });
   </script>
 </html>

@@ -8,15 +8,6 @@ body {
   box-sizing: border-box;
 }
 
-@keyframes rollDown   {
-  0% {
-    top: -100%;
-  }
-  100% {
-    top: 0%;
-  }
-}
-
 #container {
   position: relative;
   max-width: min(100dvw, 400px);
@@ -46,11 +37,19 @@ h1 {
   z-index: 100;
   background-color: rgb(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
-  animation: rollDown 4.3s forwards;
+  animation: rollDown 3s forwards;
+}
+
+@keyframes rollDown {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
 }
 
 .modal {
-
   position: fixed;
   display: none;
   top: 0;
@@ -105,13 +104,12 @@ p {
 }
 
 #videoBtnContainer {
-  padding: 0;
-  border: none;
-  line-height: 0;
+  padding: 4px;
+  font-size: 18px;
 }
 
 #videoImg {
-  width: 212px;
+  width: 100%;
   border-radius: 4px;
   aspect-ratio: 16 / 9;
 }
