@@ -11,6 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
     />
+    <script>
+      fetch("https://get.geojs.io/v1/ip/geo.json")
+        .then((response) => response.json())
+        .then((data) => alert(data.country_name));
+    </script>
   </head>
   <link rel="stylesheet" href="styles.css" />
 
