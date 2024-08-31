@@ -170,6 +170,6 @@ a {
 }
 
 .buffer {
-  margin-top: 10px;
-  height: 20px;
+  height: 16px;
+  background-color: #beb8e0;
 }
