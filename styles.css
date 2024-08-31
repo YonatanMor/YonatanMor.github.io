@@ -63,8 +63,8 @@ h1 {
 .modal-close {
   position: absolute;
   z-index: 100;
-  left: 8px;
-  top: -8px;
+  left: 32px;
+  top: 8px;
   font-size: 40px;
   cursor: pointer;
 }
