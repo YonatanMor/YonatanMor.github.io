@@ -107,7 +107,6 @@ p {
   padding: 4px;
   font-size: 18px;
   color: #beb8e0;
-
 }
 
 #videoImg {
@@ -147,6 +146,7 @@ li {
   list-style-type: none;
   margin-bottom: 1rem;
   background-color: #090519;
+  cursor: pointer;
 }
 
 li:active a {
@@ -162,11 +162,24 @@ a {
   text-decoration: none;
   font-size: large;
   color: #beb8e0;
-  cursor: pointer;
 }
 
 #github-repo {
   margin: 0;
+}
+
+.emailLi{
+  /* height: 35px; */
+}
+
+.emailBtn {
+  color: #beb8e0;
+  background-color: transparent;
+  font-size: large;
+  border: none;
+  font-family: "Source Code Pro";
+  padding: 0;
+  cursor: pointer;
 }
 
 .buffer {
