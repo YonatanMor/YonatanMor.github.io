@@ -17,14 +17,14 @@
     <div class="modal-overlay"></div>
     <div class="modal">
       <div class="modal-close">&times;</div>
-      <video muted id="video" controls src="#"></video>
+      <video muted class="video" controls src="#"></video>
     </div>
-    <div id="container">
+    <div class="container">
       <h1>Jonathan Mor</h1>
-      <span id="sub-title">Frontend Developer</span>
+      <span class="sub-title">Frontend Developer</span>
 
-      <div id="content">
-        <div id="text-container">
+      <div class="content">
+        <div class="text-container">
           <h2>Me In A Nutshell</h2>
           <p>
             Hi, I'm Jonathan, <br />
@@ -43,15 +43,15 @@
             Cheers!
           </p>
         </div>
-        <div id="project-container">
+        <div class="project-container">
           <h2 style="margin: 0">Room Booker <br /></h2>
           <div>(My Pet Project)</div>
           <ul>
-            <li id="videoBtnContainer">
-              <img id="videoImg" src="videoSnap.png" />
+            <li class="videoBtnContainer">
+              <img class="videoImg" src="videoSnap.png" />
               <span>Watch Reel</span>
             </li>
-            <li id="github-repo">
+            <li class="github-repo">
               <a
                 href="https://github.com/YonatanMor/rooms?tab=readme-ov-file#readme"
                 target="_blank"
@@ -61,11 +61,11 @@
           </ul>
         </div>
 
-        <div id="contact-container">
+        <div class="contact-container">
           <h2>Contact Info</h2>
           <ul>
-            <li id="cv">
-              <a id="ancorCV" href="#" target="_blank">CV</a>
+            <li class="cv">
+              <a class="ancorCV" href="#" target="_blank">CV</a>
             </li>
             <li>
               <a
@@ -85,7 +85,8 @@
               >
             </li>
             <li class="emailLi">
-              <button class="emailBtn"
+              <button
+                class="emailBtn"
                 onclick="window.location.href='mailto:yoni304@gmail.com';"
               >
                 Email
@@ -99,11 +100,11 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", async () => {
-        const ancorCV = document.getElementById("ancorCV");
-        const videoBtn = document.getElementById("videoBtnContainer");
+        const ancorCV = document.querySelector(".ancorCV");
+        const videoBtn = document.querySelector(".videoBtnContainer");
         const modalContainer = document.querySelector(".modal");
         const modalClose = document.querySelector(".modal-close");
-        const video = document.getElementById("video");
+        const video = document.querySelector(".video");
         const modalOverlay = document.querySelector(".modal-overlay");
 
         async function getUserLocation() {

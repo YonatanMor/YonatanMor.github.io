@@ -8,7 +8,7 @@ body {
   box-sizing: border-box;
 }
 
-#container {
+.container {
   position: relative;
   max-width: min(100dvw, 400px);
   display: flex;
@@ -21,7 +21,7 @@ h1 {
   font-weight: 700;
 }
 
-#sub-title {
+.sub-title {
   display: inline-block;
   text-align: center;
   letter-spacing: 3.1px;
@@ -52,7 +52,7 @@ h1 {
 .modal {
   position: fixed;
   display: none;
-  top: 0;
+  top: 20px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -69,17 +69,17 @@ h1 {
   cursor: pointer;
 }
 
-#video {
+.video {
   border-radius: 12px;
   width: calc(100% - 24px);
 }
 
-#content {
+.content {
   height: 100vh;
   width: 90%;
 }
 
-#text-container {
+.text-container {
   background-color: #1d1834;
   border-radius: 12px;
   margin: 1rem 0 1rem 0;
@@ -92,7 +92,7 @@ p {
   margin: 0;
 }
 
-#project-container {
+.project-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,19 +103,19 @@ p {
   border-radius: 12px;
 }
 
-#videoBtnContainer {
+.videoBtnContainer {
   padding: 4px;
   font-size: 18px;
   color: #beb8e0;
 }
 
-#videoImg {
+.videoImg {
   width: 100%;
   border-radius: 4px;
   aspect-ratio: 16 / 9;
 }
 
-#contact-container {
+.contact-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,7 +164,7 @@ a {
   color: #beb8e0;
 }
 
-#github-repo {
+.github-repo {
   margin: 0;
 }
 
