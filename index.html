@@ -17,7 +17,15 @@
     <div class="modal-overlay"></div>
     <div class="modal">
       <div class="modal-close">&times;</div>
-      <video muted class="video" controls src="#"></video>
+      <iframe
+        class="video"
+        src="#"
+        muted="1"
+        frameborder="0"
+        autoplay="1"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
     <div class="container">
       <h1>Jonathan Mor</h1>
@@ -118,11 +126,13 @@
         if (isIsraeli) {
           ancorCV.href =
             "https://drive.google.com/file/d/1-ND6S7hMmUjS2hUjNebPKPavtDZrGxRt/view?usp=sharing";
-          video.src = "video.mp4";
+          video.src =
+            "https://player.vimeo.com/video/1005090359?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
         } else {
           ancorCV.href =
             "https://drive.google.com/file/d/1-JklAGJ4tJDJMhZs5TSHikGzxcvAP3x4/view?usp=sharing";
-          video.src = "tiflatz.mp4";
+          video.src =
+            "https://drive.google.com/uc?export=download&id=1-VnKKmTRP1_Pc9Crzj8yMXw5VhH22_mj";
         }
 
         videoBtn.addEventListener("click", (e) => {
