@@ -108,69 +108,69 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", async () => {
-  const ancorCV = document.querySelector(".ancorCV");
-  const videoBtn = document.querySelector(".videoBtnContainer");
-  const modalContainer = document.querySelector(".modal");
-  const modalClose = document.querySelector(".modal-close");
-  const video = document.querySelector(".video");
-  const modalOverlay = document.querySelector(".modal-overlay");
+        const ancorCV = document.querySelector(".ancorCV");
+        const videoBtn = document.querySelector(".videoBtnContainer");
+        const modalContainer = document.querySelector(".modal");
+        const modalClose = document.querySelector(".modal-close");
+        const video = document.querySelector(".video");
+        const modalOverlay = document.querySelector(".modal-overlay");
 
-  async function getUserLocation() {
-    const data = await fetch("https://get.geojs.io/v1/ip/geo.json");
-    return await data.json();
-  }
+        async function getUserLocation() {
+          const data = await fetch("https://get.geojs.io/v1/ip/geo.json");
+          return await data.json();
+        }
 
-  const userLocation = await getUserLocation();
-  const isIsraeli = userLocation.country === "Israel";
+        const userLocation = await getUserLocation();
+        const isIsraeli = userLocation.country === "Israel";
 
-  if (isIsraeli) {
-    ancorCV.href =
-      "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
-    video.src =
-      "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
-  } else {
-    ancorCV.href =
-      "https://drive.google.com/file/d/1-JklAGJ4tJDJMhZs5TSHikGzxcvAP3x4/view?usp=sharing";
-    video.src =
-      "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
-  }
+        if (isIsraeli) {
+          ancorCV.href =
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
+          video.src =
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
+        } else {
+          ancorCV.href =
+            "https://drive.google.com/file/d/1-JklAGJ4tJDJMhZs5TSHikGzxcvAP3x4/view?usp=sharing";
+          video.src =
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
+        }
 
-  function resetAndPlayVideo() {
-    // Send a message to the Vimeo player to seek to the start and play the video
-    video.contentWindow.postMessage('{"method":"setCurrentTime","value":0}', '*');
-    video.contentWindow.postMessage('{"method":"play"}', '*');
-  }
+        function resetAndPlayVideo() {
+          video.contentWindow.postMessage(
+            '{"method":"setCurrentTime","value":0}',
+            "*"
+          );
+          video.contentWindow.postMessage('{"method":"play"}', "*");
+        }
 
-  function pauseVideo() {
-    // Send a message to the Vimeo player to pause the video
-    video.contentWindow.postMessage('{"method":"pause"}', '*');
-  }
+        function pauseVideo() {
+          video.contentWindow.postMessage('{"method":"pause"}', "*");
+        }
 
-  videoBtn.addEventListener("click", (e) => {
-    modalOverlay.style.display = "block";
-    modalContainer.style.display = "flex";
-    e.stopPropagation();
-    resetAndPlayVideo();
-  });
+        videoBtn.addEventListener("click", (e) => {
+          modalOverlay.style.display = "block";
+          modalContainer.style.display = "flex";
+          e.stopPropagation();
+          resetAndPlayVideo();
+        });
 
-  modalClose.addEventListener("click", (e) => {
-    modalOverlay.style.display = "none";
-    modalContainer.style.display = "none";
-    e.stopPropagation();
-    pauseVideo(); // Pause the video when the modal is closed
-  });
+        modalClose.addEventListener("click", (e) => {
+          modalOverlay.style.display = "none";
+          modalContainer.style.display = "none";
+          e.stopPropagation();
+          pauseVideo();
+        });
 
-  modalContainer.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+        modalContainer.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
 
-  document.body.addEventListener("click", () => {
-    modalOverlay.style.display = "none";
-    modalContainer.style.display = "none";
-    pauseVideo(); // Pause the video when clicking outside the modal
-  });
-});
-
+        document.body.addEventListener("click", () => {
+          modalOverlay.style.display = "none";
+          modalContainer.style.display = "none";
+          pauseVideo();
+        });
+      });
     </script>
   </body>
 </html>
