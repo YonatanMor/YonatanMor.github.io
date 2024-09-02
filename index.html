@@ -125,21 +125,29 @@
 
         if (isIsraeli) {
           ancorCV.href =
-            "https://player.vimeo.com/video/1005389902?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
           video.src =
-            "https://player.vimeo.com/video/1005389902?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
         } else {
           ancorCV.href =
             "https://drive.google.com/file/d/1-JklAGJ4tJDJMhZs5TSHikGzxcvAP3x4/view?usp=sharing";
           video.src =
-            "https://player.vimeo.com/video/1005389902?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+            "https://player.vimeo.com/video/1005389902?badge=0&autopause=0&player_id=0&app_id=58479";
+        }
+
+        function resetAndPlayVideo() {
+          video.contentWindow.postMessage(
+            '{"method":"setCurrentTime","value":0}',
+            "*"
+          );
+          video.contentWindow.postMessage('{"method":"play"}', "*");
         }
 
         videoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
           e.stopPropagation();
-          video.play();
+          resetAndPlayVideo();
         });
 
         modalClose.addEventListener("click", (e) => {
@@ -155,8 +163,7 @@
         document.body.addEventListener("click", () => {
           modalOverlay.style.display = "none";
           modalContainer.style.display = "none";
-          video.pause();
-          video.currentTime = 0;
+          video.contentWindow.postMessage('{"method":"pause"}', "*");
         });
       });
     </script>
