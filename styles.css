@@ -52,7 +52,7 @@ h1 {
 .modal {
   position: fixed;
   display: none;
-  top: 20px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -63,8 +63,8 @@ h1 {
 .modal-close {
   position: absolute;
   z-index: 100;
-  left: 32px;
-  top: 8px;
+  left: 24px;
+  top: 24px;
   font-size: 40px;
   cursor: pointer;
 }
