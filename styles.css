@@ -64,7 +64,7 @@ h1 {
   position: absolute;
   z-index: 100;
   left: 24px;
-  top: 24px;
+  top: 6dvh;
   font-size: 40px;
   cursor: pointer;
   color: rgb(135, 135, 142);
@@ -169,8 +169,8 @@ a {
   margin: 0;
 }
 
-.emailLi{
-margin: 0;
+.emailLi {
+  margin: 0;
 }
 
 .emailBtn {
