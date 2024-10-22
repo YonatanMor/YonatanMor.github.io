@@ -16,10 +16,11 @@
   </head>
   <body>
     <div class="modal-overlay"></div>
+
     <div class="modal">
       <div class="modal-close">&times;</div>
       <iframe
-        class="video"
+        class="videoIframe"
         src=""
         muted
         frameborder="0"
@@ -27,6 +28,7 @@
         allowfullscreen
       ></iframe>
     </div>
+
     <div class="container">
       <h1>Jonathan Mor</h1>
       <span class="sub-title">Frontend Developer</span>
@@ -36,9 +38,9 @@
           <h2>Me In A Nutshell</h2>
           <p>
             Hi, I'm Jonathan, <br />
-            a frontend developer with a passion for crafting great
-            products and great UIs. I pride myself on keeping with the latest
-            trends and love learning new ways to build better software.
+            a frontend developer with a passion for crafting great products and
+            great UIs. I pride myself on keeping with the latest trends and love
+            learning new ways to build better software.
             <br />
           </p>
           <p>
@@ -51,17 +53,36 @@
             Cheers!
           </p>
         </div>
+
         <div class="project-container">
           <h2 style="margin: 0">Room Booker <br /></h2>
           <div>(My Pet Project)</div>
           <ul>
-            <li class="videoBtnContainer">
+            <li class="roomsVideoBtnContainer">
               <img class="videoImg" src="videoSnap.png" />
               <span>Watch Reel</span>
             </li>
             <li class="github-repo">
               <a
                 href="https://github.com/YonatanMor/rooms?tab=readme-ov-file#readme"
+                target="_blank"
+                >GitHub Repo</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="project-container">
+          <h2 style="margin: 0">Manifest Manager<br /></h2>
+          <div>(My Pet Project)</div>
+          <ul>
+            <li class="ManifestVideoBtnContainer">
+              <img class="videoImg" src="manifestManagerSnap.png" />
+              <span>Watch Reel</span>
+            </li>
+            <li class="github-repo">
+              <a
+                href="https://github.com/YonatanMor/persons_manifest_react_express"
                 target="_blank"
                 >GitHub Repo</a
               >
@@ -109,10 +130,13 @@
     <script>
       document.addEventListener("DOMContentLoaded", async () => {
         const ancorCV = document.querySelector(".ancorCV");
-        const videoBtn = document.querySelector(".videoBtnContainer");
+        const roomsVideoBtn = document.querySelector(".roomsVideoBtnContainer");
+        const manifestVideoBtn = document.querySelector(
+          ".ManifestVideoBtnContainer"
+        );
         const modalContainer = document.querySelector(".modal");
         const modalClose = document.querySelector(".modal-close");
-        const video = document.querySelector(".video");
+        const videoIframe = document.querySelector(".videoIframe");
         const modalOverlay = document.querySelector(".modal-overlay");
 
         async function getUserLocation() {
@@ -126,26 +150,25 @@
         if (isIsraeli) {
           ancorCV.href =
             "https://drive.google.com/file/d/1-ccAKAG-FqRkmQgVzWtNzouactwo3V31/view?usp=sharing";
-          video.src =
-            "https://player.vimeo.com/video/1005448600?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
         } else {
           ancorCV.href =
             "https://drive.google.com/file/d/1-Wdn5ggOqUcGNycn0Vy2saniZpGFOUs1/view?usp=sharing";
-          video.src =
-            "https://player.vimeo.com/video/1005761767?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
         }
 
-        const player = new Vimeo.Player(video);
+        let player = null;
 
-        function resetAndPlayVideo() {
+        function resetAndPlayVideo(url) {
+          videoIframe.src = url; // Set the new video source
+          player = new Vimeo.Player(videoIframe); // Initialize Vimeo player with the new iframe
           player.setCurrentTime(0).then(function () {
             player.play();
           });
-          video.contentWindow.postMessage('{"method":"play"}', "*");
         }
 
         function pauseVideo() {
-          player.pause();
+          if (player) {
+            player.pause();
+          }
         }
 
         function closeModal() {
@@ -154,11 +177,22 @@
           pauseVideo();
         }
 
-        videoBtn.addEventListener("click", (e) => {
+        roomsVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
+          resetAndPlayVideo(
+            "https://player.vimeo.com/video/1005448600?badge=0&autopause=0&player_id=0&app_id=58479"
+          ); // Rooms video URL
           e.stopPropagation();
-          resetAndPlayVideo();
+        });
+
+        manifestVideoBtn.addEventListener("click", (e) => {
+          modalOverlay.style.display = "block";
+          modalContainer.style.display = "flex";
+          resetAndPlayVideo(
+            "https://player.vimeo.com/video/1022061761?badge=0&autopause=0&player_id=0&app_id=58479"
+          ); // Manifest video URL
+          e.stopPropagation();
         });
 
         modalClose.addEventListener("click", (e) => {
@@ -174,7 +208,7 @@
           closeModal();
         });
 
-        player.on("ended", function () {
+        videoIframe.addEventListener("ended", function () {
           closeModal();
         });
       });
