@@ -138,15 +138,15 @@
         const modalClose = document.querySelector(".modal-close");
         const videoIframe = document.querySelector(".videoIframe");
         const modalOverlay = document.querySelector(".modal-overlay");
-
+    
         async function getUserLocation() {
           const data = await fetch("https://get.geojs.io/v1/ip/geo.json");
           return await data.json();
         }
-
+    
         const userLocation = await getUserLocation();
         const isIsraeli = userLocation.country === "Israel";
-
+    
         if (isIsraeli) {
           ancorCV.href =
             "https://drive.google.com/file/d/1-ccAKAG-FqRkmQgVzWtNzouactwo3V31/view?usp=sharing";
@@ -154,64 +154,66 @@
           ancorCV.href =
             "https://drive.google.com/file/d/1-Wdn5ggOqUcGNycn0Vy2saniZpGFOUs1/view?usp=sharing";
         }
-
+    
         let player = null;
-
+    
         function resetAndPlayVideo(url) {
-          videoIframe.src = url; 
-          player = new Vimeo.Player(videoIframe); 
+          videoIframe.src = url;
+          player = new Vimeo.Player(videoIframe);
           player.setCurrentTime(0).then(function () {
             player.play();
           });
         }
-
+    
         function pauseVideo() {
           if (player) {
             player.pause();
           }
         }
-
+    
         function closeModal() {
           modalOverlay.style.display = "none";
           modalContainer.style.display = "none";
           pauseVideo();
         }
-
+    
         roomsVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
           resetAndPlayVideo(
             "https://player.vimeo.com/video/1005448600?badge=0&autopause=0&player_id=0&app_id=58479"
-          ); 
+          );
           e.stopPropagation();
         });
-
+    
         manifestVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
-          resetAndPlayVideo(
-            "https://player.vimeo.com/video/1022061761?badge=0&autopause=0&player_id=0&app_id=58479"
-          ); 
+          const manifestVideoUrl = isIsraeli
+            ? "https://player.vimeo.com/video/1022061761?badge=0&autopause=0&player_id=0&app_id=58479"
+            : "https://player.vimeo.com/video/1022442489?badge=0&autopause=0&player_id=0&app_id=58479";
+          resetAndPlayVideo(manifestVideoUrl);
           e.stopPropagation();
         });
-
+    
         modalClose.addEventListener("click", (e) => {
           closeModal();
           e.stopPropagation();
         });
-
+    
         modalContainer.addEventListener("click", (e) => {
           e.stopPropagation();
         });
-
+    
         document.body.addEventListener("click", () => {
           closeModal();
         });
-
+    
         videoIframe.addEventListener("ended", function () {
           closeModal();
         });
       });
     </script>
+    
   </body>
 </html>
