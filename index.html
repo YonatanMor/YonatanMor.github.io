@@ -158,8 +158,8 @@
         let player = null;
 
         function resetAndPlayVideo(url) {
-          videoIframe.src = url; // Set the new video source
-          player = new Vimeo.Player(videoIframe); // Initialize Vimeo player with the new iframe
+          videoIframe.src = url; 
+          player = new Vimeo.Player(videoIframe); 
           player.setCurrentTime(0).then(function () {
             player.play();
           });
@@ -182,7 +182,7 @@
           modalContainer.style.display = "flex";
           resetAndPlayVideo(
             "https://player.vimeo.com/video/1005448600?badge=0&autopause=0&player_id=0&app_id=58479"
-          ); // Rooms video URL
+          ); 
           e.stopPropagation();
         });
 
@@ -191,7 +191,7 @@
           modalContainer.style.display = "flex";
           resetAndPlayVideo(
             "https://player.vimeo.com/video/1022061761?badge=0&autopause=0&player_id=0&app_id=58479"
-          ); // Manifest video URL
+          ); 
           e.stopPropagation();
         });
 
