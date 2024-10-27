@@ -146,11 +146,13 @@
 
         const userLocation = await getUserLocation();
         const isIsraeli = userLocation.country === "Israel";
-
+        isIsraeli
+          ? ancorCV.href = "google.com"
+          : ancorCV.href = "ynet.com"
         let player = null;
 
         function resetAndPlayVideo(url) {
-          videoIframe.src = url; 
+          videoIframe.src = url;
           player = new Vimeo.Player(videoIframe);
           player.setCurrentTime(0).then(function () {
             player.play();
@@ -161,23 +163,21 @@
           modalOverlay.style.display = "none";
           modalContainer.style.display = "none";
           if (player) {
-            player.unload(); 
+            player.unload();
           }
         }
 
-        
         roomsVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
           const roomsVideoUrl = isIsraeli
             ? "https://player.vimeo.com/video/1005448600?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            : "https://player.vimeo.com/video/1005761767?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            : "https://player.vimeo.com/video/1005761767?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
           console.log(roomsVideoUrl);
           resetAndPlayVideo(roomsVideoUrl);
           e.stopPropagation();
         });
 
-        
         manifestVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
