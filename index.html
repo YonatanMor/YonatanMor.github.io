@@ -76,7 +76,7 @@
           <h2 style="margin: 0">Manifest Manager<br /></h2>
           <div>(Pet Project)</div>
           <ul>
-            <li class="ManifestVideoBtnContainer">
+            <li class="manifestVideoBtnContainer">
               <img class="videoImg" src="manifestManagerSnap.png" />
               <span>Watch Reel</span>
             </li>
@@ -132,60 +132,52 @@
         const ancorCV = document.querySelector(".ancorCV");
         const roomsVideoBtn = document.querySelector(".roomsVideoBtnContainer");
         const manifestVideoBtn = document.querySelector(
-          ".ManifestVideoBtnContainer"
+          ".manifestVideoBtnContainer"
         );
         const modalContainer = document.querySelector(".modal");
         const modalClose = document.querySelector(".modal-close");
         const videoIframe = document.querySelector(".videoIframe");
         const modalOverlay = document.querySelector(".modal-overlay");
-    
+
         async function getUserLocation() {
           const data = await fetch("https://get.geojs.io/v1/ip/geo.json");
           return await data.json();
         }
-    
+
         const userLocation = await getUserLocation();
         const isIsraeli = userLocation.country === "Israel";
-    
-        if (isIsraeli) {
-          ancorCV.href =
-            "https://drive.google.com/file/d/1-ccAKAG-FqRkmQgVzWtNzouactwo3V31/view?usp=sharing";
-        } else {
-          ancorCV.href =
-            "https://drive.google.com/file/d/1-Wdn5ggOqUcGNycn0Vy2saniZpGFOUs1/view?usp=sharing";
-        }
-    
+
         let player = null;
-    
+
         function resetAndPlayVideo(url) {
-          videoIframe.src = url;
+          videoIframe.src = url; // Set the iframe src to the specific video URL
           player = new Vimeo.Player(videoIframe);
           player.setCurrentTime(0).then(function () {
             player.play();
           });
         }
-    
-        function pauseVideo() {
-          if (player) {
-            player.pause();
-          }
-        }
-    
+
         function closeModal() {
           modalOverlay.style.display = "none";
           modalContainer.style.display = "none";
-          pauseVideo();
+          if (player) {
+            player.unload(); // Completely unload the player instance
+          }
         }
-    
+
+        // Event listener for the Rooms video button
         roomsVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
-          resetAndPlayVideo(
-            "https://player.vimeo.com/video/1005448600?badge=0&autopause=0&player_id=0&app_id=58479"
-          );
+          const roomsVideoUrl = isIsraeli
+            ? "https://player.vimeo.com/video/1005448600?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            : "https://player.vimeo.com/video/1005761767?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          console.log(roomsVideoUrl);
+          resetAndPlayVideo(roomsVideoUrl);
           e.stopPropagation();
         });
-    
+
+        // Event listener for the Manifest video button
         manifestVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
@@ -195,25 +187,24 @@
           resetAndPlayVideo(manifestVideoUrl);
           e.stopPropagation();
         });
-    
+
         modalClose.addEventListener("click", (e) => {
           closeModal();
           e.stopPropagation();
         });
-    
+
         modalContainer.addEventListener("click", (e) => {
           e.stopPropagation();
         });
-    
+
         document.body.addEventListener("click", () => {
           closeModal();
         });
-    
+
         videoIframe.addEventListener("ended", function () {
           closeModal();
         });
       });
     </script>
-    
   </body>
 </html>
