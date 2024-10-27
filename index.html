@@ -150,7 +150,7 @@
         let player = null;
 
         function resetAndPlayVideo(url) {
-          videoIframe.src = url; // Set the iframe src to the specific video URL
+          videoIframe.src = url; 
           player = new Vimeo.Player(videoIframe);
           player.setCurrentTime(0).then(function () {
             player.play();
@@ -161,11 +161,11 @@
           modalOverlay.style.display = "none";
           modalContainer.style.display = "none";
           if (player) {
-            player.unload(); // Completely unload the player instance
+            player.unload(); 
           }
         }
 
-        // Event listener for the Rooms video button
+        
         roomsVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
@@ -177,7 +177,7 @@
           e.stopPropagation();
         });
 
-        // Event listener for the Manifest video button
+        
         manifestVideoBtn.addEventListener("click", (e) => {
           modalOverlay.style.display = "block";
           modalContainer.style.display = "flex";
